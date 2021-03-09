@@ -94,17 +94,33 @@ views:
           - switch.output_abcdef_1003
 
       - id: alarm_events_feed
-        type: "custom:home-feed-card"
+        type: "custom:logbook-card"
         title: Events
         show_header_toggle: false
-        compact_mode: true
-        entities:
-          - entity: sensor.alarm_event
-            name: Events
-            content_template: '{{state}}'
-            include_history: true
-            max_history: 5
-            remove_repeats: false
+        entity: sensor.event_abcdef
+        attributes:
+          - value: text
+          - value: userid
+          - value: device
+          - value: code
+          - value: area
+          - value: nr
+        hiddenState:
+          - ''
+          - 'unknown'
+          - null
+          - 'Update'
+        show:
+          state: true
+          duration: false
+          end_date: false
+          start_date: false
+          separator: true
+        separator_style:
+          color: black
+          style: dashed
+        history: 10
+        collapse: 2
 
       - id: zones_motion_list
         type: entities
