@@ -1,0 +1,124 @@
+title: Home
+
+views:
+  - id: 1
+    icon: mdi:security
+    title: Alarm
+    cards:
+
+      - id: alarm_keypad_card
+        type: custom:alarm-keypad-card
+        title: Galaxy
+        unique_id: "abcdef"
+        kpd_line1: sensor.keypad_abcdef_display_1
+        kpd_line2: sensor.keypad_abcdef_display_2
+        beep: sensor.keypad_abcdef_beep
+        setting: sensor.keypad_abcdef_setting
+        view_display: true
+        view_pad: true
+        view_quickset: false
+        scale: "1"
+
+      - id: group_set_states
+        type: entities
+        title: Group state
+        show_header_toggle: false
+        entities:
+          - type: custom:custom-group-state-card
+            entity: sensor.group_abcdef_a1_state
+            entity_alarm: sensor.group_abcdef_a1_alarm
+            unique_id: "abcdef"
+            name: Group A1
+            group: A1
+
+          - type: custom:custom-group-state-card
+            entity: sensor.group_abcdef_a2_state
+            entity_alarm: sensor.group_abcdef_a2_alarm
+            unique_id: "abcdef"
+            name: Group A2
+            group: A2
+
+          - type: custom:custom-group-state-card
+            entity: sensor.group_abcdef_a3_state
+            entity_alarm: sensor.group_abcdef_a3_alarm
+            unique_id: "abcdef"
+            name: Group A3
+            group: A3
+
+      - id: zones_open_filter
+        type: entity-filter
+        entities:
+          - binary_sensor.zone_abcdef_1023
+          - binary_sensor.zone_abcdef_1051
+        state_filter:
+          - 'on'
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Zones open
+
+      - id: zones_omitted_filter
+        type: entity-filter
+        entities:
+          - binary_sensor.zone_abcdef_1023
+          - binary_sensor.zone_abcdef_1051
+        state_filter:
+          - operator: "=="
+            value: "1"
+            attribute: omit
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Zones omitted
+
+      - id: rf_lowbatt_filter
+        type: entity-filter
+        entities:
+          - binary_sensor.rf_21762832
+          - binary_sensor.rf_18096751
+        state_filter:
+          - operator: "=="
+            value: "1"
+            attribute: lowbatt
+        card:
+          type: entities
+          show_header_toggle: false
+          title: RF Low battery
+
+      - id: set_states_outputs
+        type: entities
+        title: Outputs
+        show_header_toggle: false
+        entities:
+          - switch.output_abcdef_1002
+          - switch.output_abcdef_1003
+
+      - id: alarm_events_feed
+        type: "custom:home-feed-card"
+        title: Events
+        show_header_toggle: false
+        compact_mode: true
+        entities:
+          - entity: sensor.alarm_event
+            name: Events
+            content_template: '{{state}}'
+            include_history: true
+            max_history: 5
+            remove_repeats: false
+
+      - id: zones_motion_list
+        type: entities
+        show_header_toggle: false
+        title: Motion
+        entities:
+          - binary_sensor.zone_abcdef_1061
+          - binary_sensor.zone_abcdef_1062
+
+      - id: zones_safety_list
+        type: entities
+        show_header_toggle: false
+        title: Safety
+        entities:
+          - binary_sensor.zone_abcdef_1055
+          - binary_sensor.zone_abcdef_1056
+

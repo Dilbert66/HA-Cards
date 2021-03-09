@@ -1,0 +1,28 @@
+# Outputs
+switch.output_abcdef_1002:
+  friendly_name: Output 1002
+switch.output_abcdef_1012:
+  friendly_name: Output 1012
+
+# Zones
+binary_sensor.zone_abcdef_1021:
+  friendly_name: Zone 1021
+  device_class: motion
+binary_sensor.zone_abcdef_1023:
+  friendly_name: Zone 1023
+  device_class: door
+
+binary_sensor.zone_abcdef_1031:
+  friendly_name: Zone 1031
+  device_class: motion
+binary_sensor.zone_abcdef_1032:
+  friendly_name: Zone 1032
+  device_class: motion
+
+# RF Devices
+binary_sensor.rf_abcdef_21762832:
+  friendly_name: Living front door
+  device_class: door
+binary_sensor.rf_abcdef_18096751:
+  friendly_name: Living back door
+  device_class: door

@@ -1,0 +1,20 @@
+title: Keypad
+
+views:
+  - icon: mdi:home-assistant
+    title: Home
+    id: home
+    cards:
+
+      - id: alarmKeypadCard1  # Automatically created id
+        type: custom:alarm-keypad-card
+        title: Galaxy
+        unique_id: "abcdef"
+        kpd_line1: sensor.alarm_keypad_display_1
+        kpd_line2: sensor.alarm_keypad_display_2
+        beep: sensor.alarm_keypad_beep
+        setting: sensor.alarm_keypad_setting
+        scale: '1.5'
+        view_pad: true
+        view_quickset: false
+
